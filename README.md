@@ -2,9 +2,9 @@
 
 ## Baseline
 - [Generative Adversarial Nets](http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf)
-  - 始まり。GeneratorとDiscriminatorという２つのネットワークを学習させて、Generatorから対象物を生成するアイデア
+  - 始まり。GeneratorとDiscriminatorという２つのネットワークを学習させて、Generatorから対象物を生成するアイデア  
   ![GAN](./makegirlsmoe/gan.png)
-- [Unsupervised Representation Learning With Deep Convolutional Generative Adversarial Networks](https://arxiv.org/pdf/1511.06434.pdf%C3%AF%C2%BC%E2%80%B0)
+- [Unsupervised Representation Learning With Deep Convolutional Generative Adversarial Networks](https://arxiv.org/pdf/1511.06434.pdf%C3%AF%C2%BC%E2%80%B0) -> [code](https://github.com/SerialLain3170/Illustration-Generator/tree/master/DCGAN)
   - DCGAN。Batch Normalizationを用いる、GeneratorにはLeaky-ReLUを用いる等GANを学習させるテクニックを駆使している。
   - ただし、高解像度にはmode collapse(同一画像を生成するようになる)が起きたり、学習の収束が安定しなかったり等問題は山積み。  
   ![DCGAN](./makegirlsmoe/dcgan.png)
@@ -24,10 +24,10 @@
   - 上記のWGANでは重みの値が二極化してしまうといった問題点があった。そこで、weight clippingではなくgradient penaltyを採用したWGAN-GPを提案。
   - 損失関数にDiscriminatorの勾配を制限する項を追加。
   ![WGAN-GP](./makegirlsmoe/wgan-gp.png)
-- [On Convergence and Stability of GANs](https://arxiv.org/pdf/1705.07215.pdf)
+- [On Convergence and Stability of GANs](https://arxiv.org/pdf/1705.07215.pdf) -> [code](https://github.com/SerialLain3170/Illustration-Generator/tree/master/DRAGAN)
   - 訓練データの周りの領域においてのみ、勾配に制約をかけるDRAGANを提案。
   ![DRAGAN](./makegirlsmoe/dragan.png)
-- [Spectral Normalization for Generative Adversarial Networks](https://arxiv.org/pdf/1802.05957.pdf)
+- [Spectral Normalization for Generative Adversarial Networks](https://arxiv.org/pdf/1802.05957.pdf) -> [code](https://github.com/SerialLain3170/Illustration-Generator/tree/master/spectral_normalization)
   - GeneratorとDiscriminatorの各層にSpectral Normalizationを加えることで1-Lipchitzの制約を満たす。
   - 実質的にハイパーパラメータのチューニングをする必要がなくなった。
 - [Unrolled Generative Adversarial Networks](https://arxiv.org/pdf/1611.02163.pdf)
@@ -36,14 +36,13 @@
 - [Self-Attention Generative Adversarial Networks](https://arxiv.org/pdf/1805.08318.pdf)
   - 画像内の離れた区間も見られるよう、self-attention機構をGeneratorとDiscriminatoに追加。
   ![SAGAN](./makegirlsmoe/sagan.png)
-- [The Relativistic Discriminator : A Key Element Missing from Standard GAN](https://arxiv.org/pdf/1807.00734.pdf)
+- [The Relativistic Discriminator : A Key Element Missing from Standard GAN](https://arxiv.org/pdf/1807.00734.pdf) -> [code](https://github.com/SerialLain3170/Illustration-Generator/tree/master/RaGAN)
   - 真のデータと偽のデータのスコア差、もしくはどちらかの平均との差を取って学習するRelativistic Discriminatorを提案する。
   ![RGAN](./makegirlsmoe/rgan.png)
-- [Which Trainings Methods for GANs Do Acutually Converge ?](https://arxiv.org/pdf/1801.04406.pdf)
+- [Which Trainings Methods for GANs Do Acutually Converge ?](https://arxiv.org/pdf/1801.04406.pdf) -> [code](https://github.com/SerialLain3170/Illustration-Generator/tree/master/RaGAN)
   - Instance noiseもしくはZero-centered gradient penaltiesを与えることで学習が安定することを提案
   - 実際の学習ではgradient penalty with critical regularizerを導入することで、一般的な最適化問題へと落とし込めている。
-  - 論文では記されてないが、1024 * 1024サイズの画像を生成することも可能。
-  - 下図において一番右下の図が今回示しているものであるが、円形ではなく、一般的な収束となっている。  
+  - 論文では記されてないが、1024 * 1024サイズの画像を生成することも可能。  
   ![GPCR](./makegirlsmoe/gpcr.png)
   
 ## High-Resolution Image Generation
@@ -60,11 +59,11 @@
   ![PGGAN](./makegirlsmoe/pggan.png)
   
 ## Style Transfer
-- [Unpaired Image-to-Image Translation using Cycle-Consitent Generative Adversarial Networks](https://arxiv.org/pdf/1703.10593.pdf)
+- [Unpaired Image-to-Image Translation using Cycle-Consitent Generative Adversarial Networks](https://arxiv.org/pdf/1703.10593.pdf) -> [code](https://github.com/SerialLain3170/Style-Transfer/tree/master/CycleGAN)
   - Pix2pix等によるスタイル変換はパラレルデータが必要だった、ノンパラレルデータでも学習できるようCycleGANを提案。
   - ２つのGeneratorとDiscriminatorのペアを用意して、互いに変換しあう。
   ![CycleGAN](./makegirlsmoe/cyclegan.png)
-- [StarGAN : Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation](https://arxiv.org/pdf/1711.09020.pdf)
+- [StarGAN : Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation](https://arxiv.org/pdf/1711.09020.pdf) -> [code](https://github.com/SerialLain3170/Style-Transfer/tree/master/StarGAN)
   - CycleGANは一対一のドメイン間しか変換できなかった、マルチドメイン間で変換できるStarGANを提案。
   - DiscriminatorはReal/Fakeの判別だけでなく、どのドメインかも判別出来るようになる。
   ![StarGAN](./makegirlsmoe/stargan.png)
